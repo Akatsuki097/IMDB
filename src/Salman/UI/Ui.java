@@ -1,5 +1,6 @@
 package Salman.UI;
 
+import Salman.Filter.MovieFilter;
 import Salman.Model.Movie;
 import Salman.Model.User;
 import Salman.Services.MovieDatabase;
@@ -52,31 +53,17 @@ public class Ui {
         System.out.println("Your email: "+ currUser.getEmail());
         System.out.println("Your age: "+ currUser.getAge());
 
-        System.out.println("====>Your Favorite Movies <=====");
-        List<Movie> fav = userServices.getCurrUser().getFavoriteMovies();
-        for(Movie movie : fav ){
-            System.out.println(movie.toString());
-        }
-        if(fav.isEmpty())
-            return;
-        System.out.println("Remove Movie From Favorites: Y/N?");
-        String choice = scanner.nextLine();
-        if(choice.equalsIgnoreCase("Y")){
-            System.out.println("Enter Movie Title: ");
-            String title = scanner.nextLine();
-            Movie movie = new Movie();
-            movie.setTitle(title);
-
-            if(fav.contains(movie)){
-                userServices.getCurrUser().removeFavoriteMovie(movie);
-            }
-        }
+        //displayYourFavorites();
 
     }
 
 
     public void displayAllMovies(){
         List<Movie> movieList = movieDatabase.getMovieList();
+        displayMovies(movieList);
+    }
+
+    void displayMovies(List<Movie> movieList){
         int i = 0;
         String choice;
         for(Movie movie: movieList){
@@ -108,23 +95,40 @@ public class Ui {
         }
     }
 
-    public void searchWithTitle(){
-
+    public void searchWithType(String type){
+        MovieFilter movieFilter = new MovieFilter(type);
+        System.out.println("Enter Title of the movie");
+        String choice = scanner.nextLine();
+        List<Movie> movieList = movieFilter.getFilteredMovie(choice);
+        System.out.println("Movies with title: " + choice);
+        displayMovies(movieList);
     }
 
-    public void searchWithCast(){
 
+
+
+    public void displayYourFavorites(){
+        System.out.println("====>Your Favorite Movies <=====");
+        List<Movie> fav = userServices.getCurrUser().getFavoriteMovies();
+        for(Movie movie : fav ){
+            System.out.println(movie.toString());
+        }
+        if(fav.isEmpty())
+            return;
+        System.out.println("Remove Movie From Favorites: Y/N?");
+        String choice = scanner.nextLine();
+        if(choice.equalsIgnoreCase("Y")){
+            System.out.println("Enter Movie Title: ");
+            String title = scanner.nextLine();
+            Movie movie = new Movie();
+            movie.setTitle(title);
+
+            if(fav.contains(movie)){
+                userServices.getCurrUser().removeFavoriteMovie(movie);
+            }
+        }
     }
-    public void searchWithCategory(){
 
-    }
-    public void addMoviesToYourFavorites(){
-
-    }
-
-    public void removeMoviesToYourFavorites(){
-
-    }
 
 
     public void displayMenu() {

@@ -47,6 +47,18 @@ public class MovieListingApplicaton {
                     case 3:
                         userInterface.displayAllMovies();
                         break;
+                    case 4:
+                        userInterface.displayYourFavorites();
+                        break;
+                    case 5:
+                        userInterface.searchWithType("title");
+                        break;
+                    case 6:
+                        userInterface.searchWithType("cast");
+                        break;
+                    case 7:
+                        userInterface.searchWithType("category");
+                        break;
                     default:
                         System.out.println("Invalid Choices!");
                 }
