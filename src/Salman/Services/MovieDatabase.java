@@ -31,6 +31,10 @@ public class MovieDatabase {
         return instance;
     }
 
+    public List<Movie> getMovieList() {
+        return movieList;
+    }
+
     //add movies from database
     private void fillUpMovieDatabase(){
 
@@ -40,9 +44,9 @@ public class MovieDatabase {
             XSSFWorkbook wb = new XSSFWorkbook(fis);
             XSSFSheet sheet = wb.getSheetAt(0);
             Iterator<Row> itr = sheet.iterator();
-            int i = 0;
+
             itr.next();
-            while(itr.hasNext() && i++ < 20){
+            while(itr.hasNext() ){
 
                 Row row = itr.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
