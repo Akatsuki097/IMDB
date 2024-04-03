@@ -8,7 +8,12 @@ import java.util.List;
 
 public class UserServices {
     public static volatile UserServices instance;
+    User currUser;
     private List<User> userList;
+
+    public User getCurrUser() {
+        return currUser;
+    }
 
     private UserServices(){
         userList = new ArrayList<>();
@@ -29,6 +34,7 @@ public class UserServices {
             userList.add(user);
             System.out.println("Registration Complete!");
         }
+        currUser = user;
 
     }
 

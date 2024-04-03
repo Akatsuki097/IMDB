@@ -24,6 +24,24 @@ public class Movie {
         this.title = title;
     }
 
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", cast='" + cast + '\'' +
+                ", category='" + category + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", budget=" + budget +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Movie movie)) return false;
+        return title.equalsIgnoreCase(movie.title);
+    }
+
     public String getCast() {
         return cast;
     }

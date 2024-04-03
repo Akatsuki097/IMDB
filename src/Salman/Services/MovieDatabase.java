@@ -35,6 +35,13 @@ public class MovieDatabase {
         return movieList;
     }
 
+    public Movie getMovieFromTitle(String title){
+        Movie dummyMovie = new Movie();
+        dummyMovie.setTitle(title);
+        int idx = movieList.indexOf(dummyMovie);
+        return movieList.get(idx);
+    }
+
     //add movies from database
     private void fillUpMovieDatabase(){
 
@@ -56,25 +63,25 @@ public class MovieDatabase {
                     Cell cell = cellIterator.next();
                     switch (cell.getColumnIndex()){
                         case 0:
-                            System.out.println(cell.getStringCellValue());
+                            //System.out.println(cell.getStringCellValue());
                             movie.setTitle(cell.getStringCellValue());
                             break;
                         case 1:
-                            System.out.println(cell.getNumericCellValue());
+                            //System.out.println(cell.getNumericCellValue());
                             DataFormatter dataFormatter = new DataFormatter();
                             String value = dataFormatter.formatCellValue(cell);
                             movie.setReleaseDate(value);
                             break;
                         case 2:
-                            System.out.println(cell.getStringCellValue());
+                            //System.out.println(cell.getStringCellValue());
                             movie.setCategory(cell.getStringCellValue());
                             break;
                         case 3:
-                            System.out.println(cell.getStringCellValue());
+                            //System.out.println(cell.getStringCellValue());
                             movie.setCast(cell.getStringCellValue());
                             break;
                         case 4:
-                            System.out.println(cell.getNumericCellValue());
+                            //System.out.println(cell.getNumericCellValue());
                             movie.setBudget(cell.getNumericCellValue());
                     }
                 }
@@ -83,7 +90,7 @@ public class MovieDatabase {
         }catch(Exception e){
             e.printStackTrace();
         }
-        System.out.println("ggs");
+
     }
 
 }
