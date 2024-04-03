@@ -33,6 +33,7 @@ public class MovieDatabase {
 
     //add movies from database
     private void fillUpMovieDatabase(){
+
         try{
             File file = new File("src/Salman/Asset/IMDB_Movie_Database.xlsx");
             FileInputStream fis = new FileInputStream(file);
@@ -42,10 +43,12 @@ public class MovieDatabase {
             int i = 0;
             itr.next();
             while(itr.hasNext() && i++ < 20){
+
                 Row row = itr.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
+                Movie movie = new Movie();
+
                 while(cellIterator.hasNext()){
-                    Movie movie = new Movie();
                     Cell cell = cellIterator.next();
                     switch (cell.getColumnIndex()){
                         case 0:
@@ -71,10 +74,12 @@ public class MovieDatabase {
                             movie.setBudget(cell.getNumericCellValue());
                     }
                 }
+                movieList.add(movie);
             }
         }catch(Exception e){
             e.printStackTrace();
         }
+        System.out.println("ggs");
     }
 
 }

@@ -1,11 +1,19 @@
 package Salman.Model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class User {
     private String name;
     private int age;
     private String email;
+
+    public User(String name, int age, String email) {
+        this.name = name;
+        this.age = age;
+        this.email = email;
+    }
+
     private List<Movie> favoriteMovies;
 
     public String getName() {
@@ -36,5 +44,15 @@ public class User {
         return favoriteMovies;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return email == user.email;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(email);
+    }
 }

@@ -1,11 +1,20 @@
 package Salman.Model;
 
+import java.util.Objects;
+
 public class Movie {
     private String title;
     private String cast;
     private String category;
     private String releaseDate;
     private double budget;
+
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, cast, category);
+    }
 
     public String getTitle() {
         return title;
