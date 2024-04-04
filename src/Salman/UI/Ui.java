@@ -53,7 +53,7 @@ public class Ui {
         System.out.println("Your email: "+ currUser.getEmail());
         System.out.println("Your age: "+ currUser.getAge());
 
-        //displayYourFavorites();
+        displayYourFavorites();
 
     }
 
@@ -69,7 +69,7 @@ public class Ui {
         for(Movie movie: movieList){
             System.out.println(movie.toString());
             i++;
-            if(i >= 20){
+            if(i >= 20 || (movieList.indexOf(movie) + 1) == movieList.size()){
                 i = 0;
                 System.out.println("Add Movies to your favorites: Y/N?");
                 choice = scanner.nextLine();
@@ -80,9 +80,9 @@ public class Ui {
                     try {
                         userServices.getCurrUser().addFavoriteMovie(dummyMovie);
                     }catch (Exception e){
-                        System.out.println("hggs");
+                        System.out.println("Cant add favorite movie");
                     }
-                    displayPersonalInfoWithFavoriteMovies();
+                    //displayPersonalInfoWithFavoriteMovies();
                 }
 
                 System.out.println("Show more: Y/N ?");
@@ -97,10 +97,10 @@ public class Ui {
 
     public void searchWithType(String type){
         MovieFilter movieFilter = new MovieFilter(type);
-        System.out.println("Enter Title of the movie");
+        System.out.println("Enter "+type+" of the movie");
         String choice = scanner.nextLine();
         List<Movie> movieList = movieFilter.getFilteredMovie(choice);
-        System.out.println("Movies with title: " + choice);
+        System.out.println("Movies with "+ type+": " + choice);
         displayMovies(movieList);
     }
 

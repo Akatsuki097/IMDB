@@ -24,7 +24,6 @@ public class MovieListingApplicaton {
         int choice;
         UserServices userServices = UserServices.getInstance();
         MovieDatabase movieDatabase = MovieDatabase.getInstance();
-        User currUser;
 
         Ui userInterface = new Ui(movieDatabase, userServices,new Scanner(System.in));
 
@@ -39,7 +38,6 @@ public class MovieListingApplicaton {
                 switch (choice){
                     case 1:
                         userInterface.registerAccount();
-                        currUser = userServices.getCurrUser();
                         break;
                     case 2:
                         userInterface.displayPersonalInfoWithFavoriteMovies();

@@ -15,18 +15,15 @@ import static org.junit.Assert.assertEquals;
 public class UtilTest {
     UserServices userServices = UserServices.getInstance();
     MovieDatabase movieDatabase = MovieDatabase.getInstance();
-    List<Movie> movieList = movieDatabase.getMovieList();
     @Test
     public void addFavorites() {
         String title = "The Gift";
         Movie movie = movieDatabase.getMovieFromTitle(title);
-        System.out.println(movie.toString());
-        assertEquals(1,1 );
+        userServices.registerUser("Salman",12,"a@gmail.com");
+        userServices.getCurrUser().addFavoriteMovie(movie);
+        assertEquals(true,userServices.getCurrUser().getFavoriteMovies().contains(movie) == true );
 
     }
 
-    @Test
-    public void DisplayAllMovies() {
 
-    }
 }

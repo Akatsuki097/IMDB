@@ -30,9 +30,9 @@ public class MovieFilter  {
         for(Movie movie : movieList){
             if(type.equalsIgnoreCase("cast") && movie.getCast().equalsIgnoreCase(value)) {
                 filteredMovie.add(movie);
-            }else if(type.equalsIgnoreCase("category") && movie.getCast().equalsIgnoreCase(value)){
+            }else if(type.equalsIgnoreCase("category") && movie.getCategory().equalsIgnoreCase(value)){
                 filteredMovie.add(movie);
-            }else if(type.equalsIgnoreCase("title") && movie.getCast().equalsIgnoreCase(value)){
+            }else if(type.equalsIgnoreCase("title") && movie.getTitle().equalsIgnoreCase(value)){
                 filteredMovie.add(movie);
             }else{
                 //do nothing

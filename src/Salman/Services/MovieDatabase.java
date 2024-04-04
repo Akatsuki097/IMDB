@@ -4,9 +4,7 @@ import Salman.Model.Movie;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -40,6 +38,17 @@ public class MovieDatabase {
         dummyMovie.setTitle(title);
         int idx = movieList.indexOf(dummyMovie);
         return movieList.get(idx);
+    }
+
+    public void sortMovies(){
+        Collections.sort(movieList, new Comparator<Movie>() {
+
+            @Override
+            public int compare(Movie o1, Movie o2) {
+                return o1.getTitle().compareTo(o2.getTitle());
+            }
+
+        });
     }
 
     //add movies from database
@@ -90,6 +99,7 @@ public class MovieDatabase {
         }catch(Exception e){
             e.printStackTrace();
         }
+        sortMovies();
 
     }
 

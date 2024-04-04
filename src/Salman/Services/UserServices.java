@@ -30,11 +30,14 @@ public class UserServices {
         User user = new User(name,age,email);
         if(userList.contains(user)){
             System.out.println("Already registered!");
+            int idx = userList.indexOf(user);
+            currUser = userList.get(idx);
         }else{
             userList.add(user);
             System.out.println("Registration Complete!");
+            currUser = user;
         }
-        currUser = user;
+
 
     }
 
